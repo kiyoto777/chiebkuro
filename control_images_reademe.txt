@@ -1,0 +1,51 @@
+● 使用方法
+control_images(selectors,controls,fadeSpeed);
+
+HTMLに使用するケース例
+onClick="control_images('#layout_b','last',1000)"
+
+● 引数
+
+selectors・・・該当するスライドショーのＩＤのセレクターを指定
+controls・・・ prev next last firest のいづれかを指定
+fadeSpeed・・・fadeInスピード（ミリ秒) 1000は１秒
+
+③ ＣＳＳ
+
+● layout_bのケース
+
+#layout_b{ /* 画像表示エリア */
+width:100px;
+height:100px;
+border:2px solid #ff0000;
+display:block;
+position:relative; /* 相対配置 */
+margin:auto;
+}
+#layout_b img{ /* 通常画像 */
+position:absolute; /* 絶対配置 */
+top:0; /* 位置 */
+left:0; /* 位置 */
+z-index:8; /* 重なりの優先度 */
+}
+#layout_b img.active{ /* 表示中画像 */
+z-index:10; /* 重なりの優先度 */
+}
+#layout_b img.last-active{/* 表示切り替え時画像 */
+z-index:9; /* 重なりの優先度 */
+}
+
+④ ＨＴＭＬ
+
+● 例 layout_bでタグがspanのケース
+最初に表示させたい部分に class="active" を指定しておくこと。
+
+<span id="layout_b">
+<img alt="P0" src="./test/gaz0.gif" class="active">
+<img alt="P1" src="./test/gaz1.gif">
+<img alt="P2" src="./test/gaz2.gif">
+<img alt="P3" src="./test/gaz3.gif">
+<img alt="P4" src="./test/gaz4.gif">
+<img alt="P5" src="./test/gaz5.gif">
+<img alt="P6" src="./test/gaz6.gif">
+</span>
