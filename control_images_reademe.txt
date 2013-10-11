@@ -1,3 +1,8 @@
+●　必要なjs
+
+jquery.min.js
+
+
 ● 使用方法
 control_images(selectors,controls,fadeSpeed);
 
