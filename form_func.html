@@ -1,0 +1,127 @@
+
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
+    \"http://www.w3.org/TR/html4/loose.dtd\">
+<html>
+    <head>
+        <title>Form func test</title>
+<script type="text/javascript">
+function Sbox_func(Form_names,names){
+ var Sbox_obj   = eval('document.'+Form_names+'.'+names);
+ var Sbox_index = Sbox_obj.selectedIndex;
+ var Sbox_value = Sbox_obj[Sbox_index].value;
+ var Sbox_text  = Sbox_obj[Sbox_index].text;
+ return {Sbox_value:Sbox_value,Sbox_text:Sbox_text};
+}
+function test_disp_select(){
+ alert("value="+Sbox_func('form1','select1').Sbox_value+'\n'+
+       "text ="+Sbox_func('form1','select1').Sbox_text);
+}
+
+
+
+function Radio_func(Form_names,names){
+ var Radio_obj   = eval('document.'+Form_names+'.'+names);
+ var Radio_value;
+ for(i=0;i<Radio_obj.length;i++){
+  if(Radio_obj[i].checked){
+   Radio_value = Radio_obj[i].value;
+   break;
+  }
+ }
+return {Radio_value:Radio_value};
+}
+function test_disp_radio(){
+ alert("value="+Radio_func('form2','radio1').Radio_value);
+}
+
+
+function Tbox_func(Form_names,names){
+ var Tbox_obj    = eval('document.'+Form_names+'.'+names);
+ var Tbox_value  = Tbox_obj.value;
+return {Tbox_value:Tbox_value};
+}
+function test_disp_Tbox(){
+ alert("text1 value="+Tbox_func('form3','text1').Tbox_value+'\n'+
+       "text2 value="+Tbox_func('form3','text2').Tbox_value+'\n'+
+       "text3 value="+Tbox_func('form3','text3').Tbox_value+'\n'+
+       "text4 value="+Tbox_func('form3','text4').Tbox_value);
+}
+
+
+function Cbox_func(Form_names,names){
+ var Cbox_obj   = eval('document.'+Form_names+'.elements["'+names+'"]');
+ var Cbox_value, Cbox_check;
+  if(Cbox_obj.checked){
+   Cbox_check = "1";
+  }else{
+   Cbox_check = "0";
+  }
+  Cbox_value = Cbox_obj.value;
+return {Cbox_check:Cbox_check,Cbox_value:Cbox_value};
+}
+function test_disp_checkbox(){
+ alert("checkbox1 value="+Cbox_func('form4','checkbox1').Cbox_check+'\n'+
+       "checkbox2 value="+Cbox_func('form4','checkbox2').Cbox_check+'\n'+
+       "checkbox3 value="+Cbox_func('form4','checkbox3').Cbox_check+'\n'+
+       "checkbox4 value="+Cbox_func('form4','checkbox4').Cbox_check);
+
+ alert("checkbox1 value="+Cbox_func('form4','checkbox1').Cbox_value+'\n'+
+       "checkbox2 value="+Cbox_func('form4','checkbox2').Cbox_value+'\n'+
+       "checkbox3 value="+Cbox_func('form4','checkbox3').Cbox_value+'\n'+
+       "checkbox4 value="+Cbox_func('form4','checkbox4').Cbox_value);
+}
+
+</script>
+</head>
+<body>
+
+<form name="form1">
+<select name="select1">
+<option value="test1">テスト①</option>
+<option value="test2">テスト②</option>
+</select>
+<input type="button" value="表示" onClick="test_disp_select();">
+</form>
+
+<form name="form2">
+<input type="radio" name="radio1" value="right"         >右　
+<input type="radio" name="radio1" value="center" checked>中央
+<input type="radio" name="radio1" value="left"          >左
+<input type="button" value="表示" onClick="test_disp_radio();">
+</form>
+
+<form name="form3">
+<input type="text" name="text1" value="">
+<input type="text" name="text2" value="">
+<input type="text" name="text3" value="">
+<input type="text" name="text4" value="">
+<input type="button" value="表示" onClick="test_disp_Tbox();">
+</form>
+
+<form name="form4">
+<input type="checkbox" name="checkbox1" value="1">
+<input type="checkbox" name="checkbox2" value="2">
+<input type="checkbox" name="checkbox3" value="3">
+<input type="checkbox" name="checkbox4" value="4">
+<input type="button" value="表示" onClick="test_disp_checkbox();">
+</form>
+
+
+
+
+<form name="form6">
+<input type="image"    name="image1" >
+<input type="password" name="pass1"  >
+<input type="checkbox" name="cbox1"  >
+<input type="file"     name="file1"  >
+<input type="hidden"   name="hidden1">
+<input type="radio"    name="radio1" >
+<input type="reset"    name="reset1" >
+<input type="submit"   name="submit1">
+<input type="text"     name="text1"  >
+</form>
+
+
+</body>
+</html>
+
